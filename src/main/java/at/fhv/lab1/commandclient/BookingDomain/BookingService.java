@@ -15,10 +15,10 @@ public class BookingService {
    
 
     public boolean bookRoom(BookRoomCommand command) throws Exception {
-        Optional<Room> existingRoomOpt = roomRepository.findRoomByNumber(command.getRoomNumber());
+        Optional<Booking> existingRoomOpt = roomRepository.findRoomByNumber(command.getRoomNumber());
 
         if (existingRoomOpt.isPresent()) {
-            Room room = existingRoomOpt.get();
+            Booking room = existingRoomOpt.get();
             if (room.getBookedDates().contains(command.getDate())) {
                 throw new Exception("Room is already booked for this date: " + command.getDate());
                 

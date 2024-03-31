@@ -1,0 +1,4 @@
+2024-03-31 10:25:11 - Processing Event: Event{customer='erik', timestamp=1711873510778, content='Das ist der content'}
+2024-03-31 10:25:11 - Processing Event: RoomBookedEvent{bookingID=123456, customer='erik', roomID=1, duration=2024-04-20}
+2024-03-31 10:44:45 - Processing Event: Event{customer='erik', timestamp=1711874685138, content='Das ist der content'}
+2024-03-31 10:44:45 - Processing Event: RoomBookedEvent{bookingID=123456, customer='erik', roomID=1, duration=2024-04-20}

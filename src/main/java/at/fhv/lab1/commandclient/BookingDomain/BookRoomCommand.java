@@ -2,7 +2,7 @@ package at.fhv.lab1.commandclient.BookingDomain;
 
 import java.time.LocalDate;
 
-import jakarta.validation.OverridesAttribute;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,6 +15,8 @@ public class BookRoomCommand {
     private String customerId;
     private LocalDate date;
     private String name;
+    private String bookingId;
+    private String content;
 
     @Override
     public String toString() {
@@ -23,6 +25,7 @@ public class BookRoomCommand {
                 ", customerId=" + customerId +
                 ", Date='" + date + '\'' +
                 ", name='" + name + '\'' +
+                ", content='" + content + '\'' +
                 '}';
     }
 }

@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import at.fhv.lab1.commandclient.BookingDomain.Room;
+import at.fhv.lab1.commandclient.BookingDomain.Booking;
 import at.fhv.lab1.commandclient.BookingDomain.RoomRepository;
 import at.fhv.lab1.commandclient.CustomerDomain.Customer;
 import at.fhv.lab1.commandclient.CustomerDomain.CustomerRepository;
@@ -44,8 +44,8 @@ public class CommandClientApplicationTest {
             customerRepository.addCustomer(erik);
 
 
-            Room room1 = new Room("1");
-            Room room2 = new Room("2");
+            Booking room1 = new Booking("1");
+            Booking room2 = new Booking("2");
             roomRepository.addRoom(room2);
             roomRepository.addRoom(room1);
         };

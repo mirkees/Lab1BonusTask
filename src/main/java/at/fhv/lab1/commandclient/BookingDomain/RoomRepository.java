@@ -9,14 +9,14 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class RoomRepository {
 
-    private final List<Room> rooms = new ArrayList<>();
+    private final List<Booking> rooms = new ArrayList<>();
 
 
-    public Optional<Room> findRoomByNumber(String roomNumber){
+    public Optional<Booking> findRoomByNumber(String roomNumber){
         return rooms.stream().filter(room -> room.getRoomNumber().equals(roomNumber)).findFirst();
     }
 
-    public void addRoom(Room room){
+    public void addRoom(Booking room){
         System.out.println("The room with the following ID was added to the repository: " + room.getRoomNumber());
         rooms.add(room);
     }

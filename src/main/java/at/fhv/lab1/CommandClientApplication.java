@@ -36,9 +36,9 @@ public class CommandClientApplication {
 
             RoomBookedEvent rbevent = new RoomBookedEvent();
             rbevent.setCustomer("Test");
-            rbevent.setDuration(12343214);
-            rbevent.setBookingID(1);
-            rbevent.setRoomID(5);
+            //rbevent.setDuration(12343214);
+            //rbevent.setBookingID(1);
+            //rbevent.setRoomID(5);
             publisher.publishEvent(rbevent);
         };
     }

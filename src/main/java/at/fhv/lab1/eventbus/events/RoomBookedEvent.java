@@ -1,25 +1,31 @@
 package at.fhv.lab1.eventbus.events;
 
+import java.time.LocalDate;
+
+
+
 public class RoomBookedEvent {
-    private long bookingID;
+    private String bookingID;
     private String customer;
-    private long roomID;
+    private String roomID;
+    private String content;
+    
 
-    private long duration;
+    private LocalDate duration;
 
-    public long getDuration() {
+    public LocalDate getDuration() {
         return duration;
     }
 
-    public void setDuration(long duration) {
+    public void setDuration(LocalDate duration) {
         this.duration = duration;
     }
 
-    public long getRoomID() {
+    public String getRoomID() {
         return roomID;
     }
 
-    public void setRoomID(long roomID) {
+    public void setRoomID(String roomID) {
         this.roomID = roomID;
     }
 
@@ -31,13 +37,26 @@ public class RoomBookedEvent {
         this.customer = customer;
     }
 
-    public long getBookingID() {
+    public String getBookingID() {
         return bookingID;
     }
 
-    public void setBookingID(long bookingID) {
+    public void setBookingID(String bookingID) {
         this.bookingID = bookingID;
     }
+
+    public void setContent(String content){
+        this.content = content;
+    }
+
+
+    public String getContent (){
+        return content;
+    }
+
+
+    
+
 
     @Override
     public String toString() {

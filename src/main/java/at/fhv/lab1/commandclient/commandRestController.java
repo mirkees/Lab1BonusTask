@@ -6,21 +6,24 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
+import at.fhv.lab1.eventbus.events.Event;
 import at.fhv.lab1.commandclient.BookingDomain.BookRoomCommand;
 import at.fhv.lab1.commandclient.BookingDomain.BookingService;
 import at.fhv.lab1.commandclient.CustomerDomain.CustomerService;
+import at.fhv.lab1.eventbus.events.RoomBookedEvent;
 
 @RestController
 public class commandRestController {
 
     private final BookingService bookingService;
     private final CustomerService customerService;
+    private final ClientEventPublisher clientPublisher;
 
 
-    public commandRestController (BookingService bookingService, CustomerService customerService){
+    public commandRestController (BookingService bookingService, CustomerService customerService, ClientEventPublisher clientPublisher){
         this.bookingService = bookingService;
         this.customerService = customerService;
+        this.clientPublisher = clientPublisher;
     }
 
     @PostMapping(value = "/bookRoom", consumes = "application/json")
@@ -28,11 +31,27 @@ public class commandRestController {
         try{
             
             if(bookingService.bookRoom(command) && customerService.customerExists(command)){
-                System.out.println("Succes");
+
+                Event event = new Event();
+                event.setContent(command.getContent());
+                event.setCustomer(command.getName());
+                event.setTimestamp(System.currentTimeMillis());
+                
+                clientPublisher.publishEvent(event);
+
+                RoomBookedEvent rb = new RoomBookedEvent();
+                rb.setBookingID(command.getBookingId());
+                rb.setCustomer(command.getName());
+                rb.setRoomID(command.getRoomNumber());
+                rb.setDuration(command.getDate());
+
+                clientPublisher.publishEvent(rb);
+
+
             }
             return ResponseEntity.ok().build();
         }catch(Exception e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Room is already booked, try again with other date");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
     }
 }
