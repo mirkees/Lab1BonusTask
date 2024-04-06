@@ -2,6 +2,7 @@ package at.fhv.lab1.commandclient;
 
 import at.fhv.lab1.eventbus.events.Event;
 import at.fhv.lab1.eventbus.events.RoomBookedEvent;
+
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;

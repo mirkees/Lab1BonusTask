@@ -13,5 +13,4 @@ public class QueryClientApplication {
     public static void main(String[] args) {
         SpringApplication.run(QueryClientApplication.class, args);
     }
-
 }

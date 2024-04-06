@@ -4,7 +4,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import at.fhv.lab1.commandclient.BookingDomain.BookRoomCommand;
+import at.fhv.lab1.commandclient.BookRoomCommand;
 
 @Service
 public class CustomerService {
